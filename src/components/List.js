@@ -1,29 +1,21 @@
-import { useEffect, useState } from "react";
+
 import styled from "styled-components";
 import ListOption from "./ListOption";
 import media from "styled-media-query";
+import { useSelector } from 'react-redux'
+
 
 function List() {
 
-  const [value, setValue] = useState([]);
-
-  useEffect(() => {
-    fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false')
-      .then(res => res.json())
-      .then((data) => {
-        setValue(data)
-        console.log(data)
-      })
-  }, []);
-
-  const last_update = value[0] == null ? "" : Date(value[0].last_updated)
+  const list = useSelector(state => state.list)
+  const last_update = list[0] == null ? "" : Date(list[0].last_updated)
 
   return (
     <Body>
       <BodyContainer>
-        {value.map((element) => {
+        {list.map((element) => {
           return (
-            <ListOption key={element.id} name={element.name} price={element.current_price} image={element.image} change={element.price_change_percentage_24h} />
+            <ListOption key={element.id} name={element.name} price={element.current_price} image={element.image} change={element.price_change_percentage_24h} id={element.id} />
           )
         })}
       </BodyContainer>

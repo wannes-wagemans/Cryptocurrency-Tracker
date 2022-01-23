@@ -1,16 +1,15 @@
 import { ArrowUpward, ArrowDownward, Favorite, AddOutlined } from '@mui/icons-material';
-import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { makeFavorite, addToCart } from '../actions';
 
 
-function ListOption({ name, price, image, change }) {
+function ListOption({ name, price, image, change, id }) {
 
-  const [favorite, setFavorite] = useState(false);
-  const [addToCart, setAddToCart] = useState([])
+  const dispatch = useDispatch()
 
   const color = change >= 0 ? '#16a34a' : '#dc2626'
   const arrow = change >= 0 ? <ArrowUpward sx={{ color: '#16a34a' }} /> : <ArrowDownward sx={{ color: '#dc2626' }} />
-  const favoriteColor = favorite ? 'rgb(1, 50, 41)' : 'rgba(1, 50, 41, 0.3)'
 
   return (
     <Crypto>
@@ -26,8 +25,8 @@ function ListOption({ name, price, image, change }) {
         </CryptoBody>
       </CryptoContainer>
       <CryptoAction>
-        <Favorite style={{ color: favoriteColor }} />
-        <AddOutlined />
+        <button onClick={() => dispatch(makeFavorite(id))}>FAV</button>
+        <button onClick={() => dispatch(addToCart(id))}>ADD</button>
       </CryptoAction>
     </Crypto>
   );

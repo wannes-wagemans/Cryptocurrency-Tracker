@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import pau from "../logo/pau.svg"
+import pau from "../img/pau.svg"
 
 function Header() {
   return (
