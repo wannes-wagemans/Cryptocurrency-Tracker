@@ -1,5 +1,3 @@
-let amount = 0
-
 const listReducer = (state = [], action) => {
   switch (action.type) {
     case "GET_DATA":
@@ -19,28 +17,34 @@ const listReducer = (state = [], action) => {
         if (item.id !== action.payload) {
           return item
         }
+        if (item.cart) {
+          return {
+            ...item,
+            cart: item.cart + 1
+          }
+        }
         return {
           ...item,
-          cart: amount += 1
+          cart: 1
         }
       })
-    case "ADD_TODO":
-      return [...state, {
-        id: Date.now(),
-        text: action.payload.text,
-        color: action.payload.color,
-        completed: false,
-      }]
-    case "DELETE_TODO":
-      return state.filter((todo) => todo.id !== action.payload)
-    case "TOGGLE_TODO":
-      return state.map((todo) => {
-        if (todo.id !== action.payload) {
-          return todo
+    case "REMOVE_CART":
+      return state.map((item) => {
+        if (item.id !== action.payload) {
+          return item
         }
+        if (item.cart) {
+          return {
+            ...item,
+            cart: item.cart - 1
+          }
+        }
+      })
+    case "REMOVE_ALL_CART":
+      return state.map((item) => {
         return {
-          ...todo,
-          completed: !todo.completed
+          ...item,
+          cart: 0
         }
       })
     default:

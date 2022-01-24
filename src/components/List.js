@@ -15,7 +15,7 @@ function List() {
       <BodyContainer>
         {list.map((element) => {
           return (
-            <ListOption key={element.id} name={element.name} price={element.current_price} image={element.image} change={element.price_change_percentage_24h} id={element.id} />
+            <ListOption key={element.id} favorite={element.favorite} cart={element.cart} name={element.name} price={element.current_price} image={element.image} change={element.price_change_percentage_24h} id={element.id} />
           )
         })}
       </BodyContainer>

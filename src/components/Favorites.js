@@ -14,16 +14,16 @@ function Favorites() {
   console.log(listOfFavorites)
 
   return (
-    <div>
-      {listOfFavorites < 1 && "You don't have any favorite Crypto's yet!"}
+    <FavDiv>
+      {listOfFavorites < 1 && <h3>You don't have any favorite Crypto's yet!</h3>}
       <FavContainer>
         {listOfFavorites.map((element) => {
           return (
-            <ListOption key={element.id} name={element.name} price={element.current_price} image={element.image} change={element.price_change_percentage_24h} id={element.id} />
+            <ListOption key={element.id} cart={element.cart} favorite={element.favorite} name={element.name} price={element.current_price} image={element.image} change={element.price_change_percentage_24h} id={element.id} />
           )
         })}
       </FavContainer>
-    </div>
+    </FavDiv>
   );
 }
 
@@ -50,3 +50,12 @@ const FavContainer = styled.div`
     grid-template-columns: repeat(4, 1fr);
   `}
 `;
+
+const FavDiv = styled.div`
+  > h3 {
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+    align-items: center;
+  }
+`

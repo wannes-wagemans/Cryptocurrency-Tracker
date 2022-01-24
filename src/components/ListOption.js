@@ -1,10 +1,15 @@
-import { ArrowUpward, ArrowDownward, Favorite, AddOutlined } from '@mui/icons-material';
+import { ArrowUpward, ArrowDownward } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { makeFavorite, addToCart } from '../actions';
+import { IconButton } from '@mui/material';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { formatNumber } from '../utils/format';
 
 
-function ListOption({ name, price, image, change, id }) {
+function ListOption({ name, price, image, change, favorite, cart, id }) {
 
   const dispatch = useDispatch()
 
@@ -16,8 +21,8 @@ function ListOption({ name, price, image, change, id }) {
       <CryptoContainer>
         <img src={image} alt={name} />
         <CryptoBody>
-          <h3>{name}</h3>
-          <p>€ {price}</p>
+          <h3>{name}{(cart || cart > 0) && " x " + cart}</h3>
+          <p>€ {formatNumber(price)}</p>
           <CryptoChange>
             {arrow}
             <p style={{ color: color }}>{Math.round(Math.abs(change) * 100) / 100}%</p>
@@ -25,8 +30,8 @@ function ListOption({ name, price, image, change, id }) {
         </CryptoBody>
       </CryptoContainer>
       <CryptoAction>
-        <button onClick={() => dispatch(makeFavorite(id))}>FAV</button>
-        <button onClick={() => dispatch(addToCart(id))}>ADD</button>
+        <IconButton onClick={() => dispatch(makeFavorite(id))}>{favorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}</IconButton>
+        <IconButton onClick={() => dispatch(addToCart(id))}><AddCircleOutlineIcon /></IconButton>
       </CryptoAction>
     </Crypto>
   );

@@ -18,3 +18,16 @@ export const addToCart = (id) => {
     payload: id
   }
 }
+
+export const removeCart = (id) => {
+  return {
+    type: "REMOVE_CART",
+    payload: id
+  }
+}
+
+export const removeAll = () => {
+  return {
+    type: "REMOVE_ALL_CART"
+  }
+}
