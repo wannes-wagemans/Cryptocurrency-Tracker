@@ -1,4 +1,4 @@
-# Personal project
+# Cryptocurrency tracker
 
-This project is fully self build.
-I build this project during my time "on the bench" @ Pàu
+This project is fully self build and only for educational purposes
+I build this project using the GeckoCoin API, React, Redux, styled components & Material-UI
