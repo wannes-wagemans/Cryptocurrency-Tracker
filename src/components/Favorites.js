@@ -11,8 +11,6 @@ function Favorites() {
     return item.favorite
   })
 
-  console.log(listOfFavorites)
-
   return (
     <FavDiv>
       {listOfFavorites < 1 && <h3>You don't have any favorite Crypto's yet!</h3>}

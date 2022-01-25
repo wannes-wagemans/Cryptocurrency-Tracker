@@ -33,7 +33,6 @@ function App() {
       .then(res => res.json())
       .then((data) => {
         dispatch(getData(data))
-        console.log(data)
       })
   }, []);
 
@@ -42,7 +41,7 @@ function App() {
   return (
     <div className="app">
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
+        <BrowserRouter basename="/cryptocurrency-tracker">
           <Header />
           <Routes>
             <Route path="/" element={<List />} />
