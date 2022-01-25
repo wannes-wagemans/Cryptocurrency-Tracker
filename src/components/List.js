@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ListOption from "./ListOption";
 import media from "styled-media-query";
 import { useSelector } from 'react-redux'
+import { CircularProgress } from "@mui/material";
 
 
 function List() {
@@ -19,7 +20,7 @@ function List() {
           )
         })}
       </BodyContainer>
-      <p>Last update: {last_update}</p>
+      {last_update ? <p>Last update: {last_update}</p> : <CircularProgress color='secondary' size={40} sx={{ position: "fixed", textAlign: "center", top: "30%", left: "-20px", marginLeft: "50%" }} />}
     </Body>
   );
 }
@@ -27,7 +28,7 @@ function List() {
 export default List;
 
 const Body = styled.div`
-
+  min-height: 78vh;
   >p {
     margin-top: 10px;
     font-size: 12px;

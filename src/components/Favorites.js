@@ -50,10 +50,11 @@ const FavContainer = styled.div`
 `;
 
 const FavDiv = styled.div`
+    height: 78vh;
   > h3 {
-    display: flex;
-    justify-content: center;
-    height: 80vh;
-    align-items: center;
+    padding: 0 20px;
+    position: fixed;
+    top: 40%;
+    text-align: center;
   }
 `

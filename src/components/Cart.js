@@ -45,7 +45,7 @@ function Cart() {
   return (
     <CartDiv>
       {open && <Alert sx={{ position: "fixed", top: "100px", left: "15%", right: "15%" }} severity="success"><AlertTitle>Purchase Successfull</AlertTitle>Thanks you for your purchase!</Alert>}
-      {cartItems < 1 ? loading ? <CircularProgress color='secondary' sx={{ margin: '20% 48%' }} /> : <h3>You don't have any items in your Cart</h3> :
+      {cartItems < 1 ? loading ? <CircularProgress color='secondary' size={40} sx={{ position: "fixed", textAlign: "center", top: "30%", left: "-20px", marginLeft: "50%" }} /> : <h3>You don't have any items in your Cart</h3> :
         <Checkout>
           {cartItems.map((item) => {
             return <CheckoutDetail image={item.image} price={item.current_price} name={item.name} cart={item.cart} id={item.id} />
@@ -87,10 +87,11 @@ const CheckoutContainer = styled.div`
 `
 
 const CartDiv = styled.div`
+    height: 78vh;
   > h3 {
-    display: flex;
-    justify-content: center;
-    height: 80vh;
-    align-items: center;
+    padding: 0 20px;
+    position: fixed;
+    top: 40%;
+    text-align: center;
   }
 `
